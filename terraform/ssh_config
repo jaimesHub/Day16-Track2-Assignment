@@ -1,0 +1,13 @@
+Host lab-bastion
+    HostName 98.92.144.145
+    User ubuntu
+    IdentityFile ./lab-key
+    IdentitiesOnly yes
+
+Host lab-cpu
+    HostName 10.0.10.147
+    User ubuntu
+    IdentityFile ./lab-key
+    IdentitiesOnly yes
+    ProxyJump lab-bastion
+

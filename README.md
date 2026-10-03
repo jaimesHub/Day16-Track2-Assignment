@@ -36,6 +36,11 @@ terraform apply
 
 > benchmark time: 2:59,25
 
+> create `ssh_config` file
+> ssh -F ssh_config lab-cpu
+> ProxyJump đi qua Bastion và dùng private key tại laptop để xác thực cả hai máy. Không cần copy private key lên Bastion. Hai lệnh SSH nối tiếp trong README cần thêm bước xác thực ở máy private; file config trên làm rõ bước đó.
+> [Tham khảo đường kết nối Bastion của AWS.](https://repost.aws/knowledge-center/ec2-linux-private-subnet-bastion-host)
+
 
 ## CP2
 
