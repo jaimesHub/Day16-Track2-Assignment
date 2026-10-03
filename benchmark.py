@@ -41,6 +41,8 @@ def get_dataset_path():
 
 def main():
     seed = 42
+    early_stopping_rounds = 50
+    early_stopping_metric = "auc"
     dataset_path = get_dataset_path()
 
     # Load data
@@ -62,13 +64,15 @@ def main():
 
     # Train model with early stopping
     model = lgb.LGBMClassifier(
-        n_estimators=300, learning_rate=0.05, random_state=seed,
+        n_estimators=1000, learning_rate=0.05, random_state=seed,
         n_jobs=2, verbosity=-1,
     )
     started = time.perf_counter()
     model.fit(
-        X_train, y_train, eval_set=[(X_valid, y_valid)], eval_metric="auc",
-        callbacks=[lgb.early_stopping(20, verbose=False)],
+        X_train, y_train, eval_set=[(X_valid, y_valid)], eval_metric=early_stopping_metric,
+        callbacks=[lgb.early_stopping(
+            early_stopping_rounds, first_metric_only=True, verbose=False,
+        )],
     )
     training_seconds = time.perf_counter() - started
 
@@ -126,6 +130,8 @@ def main():
         "decision_threshold": 0.5,
         "data_load_seconds": float(data_load_seconds),
         "training_seconds": float(training_seconds),
+        "early_stopping_metric": early_stopping_metric,
+        "early_stopping_rounds": early_stopping_rounds,
         "best_iteration": int(model.best_iteration_),
         "auc_roc": float(roc_auc_score(y_test, probabilities)),
         "accuracy": float(accuracy_score(y_test, predictions)),

@@ -59,8 +59,10 @@ source ~/lab16-venv/bin/activate
 python3 -m pip install --upgrade pip
 python3 -m pip install lightgbm scikit-learn pandas numpy kaggle
 python3 -c "import lightgbm, sklearn, pandas, numpy; print('OK')"
-
 ```
+
+> NOTE: Thực hiện CP3: https://vlearn.dev/course/k04-l34-p2-t2/reader?day=D04&part=codelab-3ff073e266314c1bbcdc532115e5d8c7-s05-doc
+> NOTE: CP3 hoàn thành khi: chạy trên VM cloud, có JSON hợp lệ chứa đủ metrics của README, terminal hiển thị kết quả và bạn giải thích được AUC dùng xác suất còn throughput có đơn vị dòng/giây. README không đặt ngưỡng AUC/F1 hay latency tối thiểu; báo cáo kết quả thực đo.
 
 [Phần 5: Kiểm tra Tài nguyên và Chi phí](https://github.com/jaimesHub/Day16-Track2-Assignment/blob/main/README_aws.md#ph%E1%BA%A7n-5-ki%E1%BB%83m-tra-t%C3%A0i-nguy%C3%AAn-v%C3%A0-chi-ph%C3%AD)
 
